@@ -1,0 +1,32 @@
+id: lru-cache
+title: LRU cache
+prompt: |
+  Implement class `LRUCache(capacity)` with `get(key)` and `put(key, value)`.
+  `get` returns -1 for a missing key. Accessing or updating a key makes it most
+  recently used. Inserting past capacity evicts the least recently used key.
+  Reject non-positive capacities with ValueError.
+language: python
+entry_file: solution.py
+test_file: test_solution.py
+timeout_seconds: 5
+tests: |
+  from solution import LRUCache
+
+  try:
+      LRUCache(0)
+      raise AssertionError("expected ValueError")
+  except ValueError:
+      pass
+
+  c = LRUCache(2)
+  c.put(1, 1)
+  c.put(2, 2)
+  assert c.get(1) == 1
+  c.put(3, 3)
+  assert c.get(2) == -1
+  c.put(1, 10)
+  c.put(4, 4)
+  assert c.get(3) == -1
+  assert c.get(1) == 10
+  assert c.get(4) == 4
+  print("PASS")

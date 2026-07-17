@@ -1,0 +1,19 @@
+id: fizzbuzz
+title: FizzBuzz list
+prompt: |
+  Implement `fizzbuzz(n: int) -> list[str]`. Return strings for integers 1..n,
+  replacing multiples of 3 with "Fizz", multiples of 5 with "Buzz", and multiples
+  of both with "FizzBuzz". For n <= 0 return an empty list.
+language: python
+entry_file: solution.py
+test_file: test_solution.py
+timeout_seconds: 5
+tests: |
+  from solution import fizzbuzz
+
+  assert fizzbuzz(0) == []
+  assert fizzbuzz(1) == ["1"]
+  assert fizzbuzz(5) == ["1", "2", "Fizz", "4", "Buzz"]
+  assert fizzbuzz(15)[-1] == "FizzBuzz"
+  assert len(fizzbuzz(100)) == 100
+  print("PASS")
